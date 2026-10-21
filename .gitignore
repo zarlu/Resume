@@ -1,0 +1,22 @@
+# Your personal data: copy of resume.example.json, created on first run
+resume.json
+
+# Build output
+build/
+dist/
+
+# Local tooling
+.claude/
+
+# Python
+.venv/
+__pycache__/
+*.py[cod]
+.ruff_cache/
+.pytest_cache/
+.mypy_cache/
+
+# OS / editor
+.DS_Store
+.idea/
+.vscode/

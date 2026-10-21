@@ -1,0 +1,95 @@
+{
+  "basics": {
+    "name": "Alex Rivera",
+    "location": "Springfield, USA",
+    "citizenship": "",
+    "phone": "555-555-0100",
+    "email": "alex.rivera@example.com",
+    "linkedin_url": "https://linkedin.com/in/alexrivera",
+    "linkedin_label": "linkedin.com/in/alexrivera",
+    "github_url": "https://github.com/alexrivera",
+    "github_label": "github.com/alexrivera"
+  },
+  "education": [
+    {
+      "school": "Example State University",
+      "location": "Springfield, USA",
+      "degree": "Bachelor of Science in Computer Science",
+      "gpa": "3.8",
+      "date": "Expected May 2027",
+      "bullets": [
+        "**Honors:** Dean's List; **First place, Example Hackathon (2026)**"
+      ]
+    }
+  ],
+  "experience": [
+    {
+      "company": "Acme Logistics",
+      "location": "Springfield, USA",
+      "title": "Software Engineering Intern",
+      "dates": "May 2026 -- Aug 2026",
+      "bullets": [
+        "Built an internal **shipment-tracking dashboard** (React, TypeScript, FastAPI, PostgreSQL) used daily by 25 dispatchers, replacing a spreadsheet workflow",
+        "Cut report generation time from 20 minutes to under 1 minute by moving aggregation into SQL and caching results",
+        "Wrote 40+ unit and integration tests with pytest, raising backend coverage from 35% to 80%"
+      ]
+    }
+  ],
+  "projects": [
+    {
+      "name": "Study Buddy",
+      "tech": "Python, FastAPI, SQLite",
+      "date": "Jan 2026 -- Present",
+      "bullets": [
+        "Built a flashcard web app with spaced repetition scheduling, used by 60 classmates",
+        "Designed a REST API with token authentication and automated tests running in GitHub Actions"
+      ]
+    },
+    {
+      "name": "Campus Map CLI",
+      "tech": "C++, Dijkstra's algorithm",
+      "date": "Oct 2025",
+      "bullets": [
+        "Implemented a shortest-path finder over a 300-node campus graph, with a command-line interface"
+      ]
+    }
+  ],
+  "skills": [
+    {
+      "label": "Languages",
+      "items": "Python, C++, TypeScript, JavaScript, SQL"
+    },
+    {
+      "label": "Frameworks",
+      "items": "React, FastAPI, Pydantic, Tailwind CSS"
+    },
+    {
+      "label": "Tools",
+      "items": "Git/GitHub, pytest, Docker, VS Code"
+    }
+  ],
+  "leadership": [
+    {
+      "organization": "Computer Science Club",
+      "location": "Springfield, USA",
+      "role": "Treasurer",
+      "dates": "Aug 2025 -- Present",
+      "bullets": []
+    }
+  ],
+  "style": {
+    "template": "simple",
+    "font": "default",
+    "font_size": 11.0,
+    "margins": {
+      "top": 0.5,
+      "bottom": 0.5,
+      "left": 0.5,
+      "right": 0.5
+    },
+    "section_gap": 0.0,
+    "entry_gap": 0.0,
+    "bullet_gap": 0.0,
+    "fit_to_page": true
+  }
+}

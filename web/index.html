@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Resume Style</title>
+  <link rel="stylesheet" href="/static/app.css">
+</head>
+<body>
+  <header class="bar">
+    <div class="brand"><span class="dot" aria-hidden="true"></span><h1 id="title">Resume style</h1></div>
+    <div class="status" id="status" aria-live="polite"></div>
+    <div class="actions">
+      <label class="chk" title="Fail the export if any [placeholder] is left in the text">
+        <input type="checkbox" id="final"> Final
+      </label>
+      <button type="button" id="revert" class="ghost" disabled>Revert</button>
+      <button type="button" id="save" disabled>Save style</button>
+      <button type="button" id="export">Export PDF</button>
+      <button type="button" id="download" class="primary" title="Export, then save the PDF to your computer">Download PDF</button>
+    </div>
+  </header>
+
+  <div class="layout">
+    <aside class="panel" id="panel" aria-label="Style controls"></aside>
+    <main class="stage">
+      <div class="frames">
+        <iframe id="f0" title="Resume preview" class="on"></iframe>
+        <iframe id="f1" title="Resume preview (next)"></iframe>
+      </div>
+      <div class="banner" id="banner" hidden role="alert"></div>
+      <div class="busy" id="busy" hidden>Building…</div>
+    </main>
+  </div>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script src="/static/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,174 @@
+((# Content-section macros shared by every top-level template. Imported by name (`sections.xxx`),
+   so each macro takes exactly what it prints — nothing is read from the caller's context. #))
+((* macro education(education) *))((* if education *))
+
+%-----------EDUCATION-----------
+\section{Education}
+  \resumeSubHeadingListStart
+((* for e in education *))
+    \resumeSubheading
+      {(((e.school|tex)))}{(((e.text('location')|tex)))}
+      {(((e.text('degree')|tex)))((* if e.text('gpa') *)); GPA: (((e.text('gpa')|tex)))((* endif *))}{(((e.text('date')|tex)))}
+((* if e.visible_bullets *))
+      \resumeItemListStart
+((* for b in e.visible_bullets *))
+        \resumeItem{(((b|tex)))}
+((* endfor *))
+      \resumeItemListEnd
+((* endif *))
+((* endfor *))
+  \resumeSubHeadingListEnd
+
+((* endif *))((* endmacro *))
+((* macro experience(experience) *))((* if experience *))
+
+%-----------EXPERIENCE-----------
+\section{Experience}
+  \resumeSubHeadingListStart
+((* for e in experience *))
+
+    \resumeSubheading
+      {(((e.company|tex)))}{(((e.text('location')|tex)))}
+      {(((e.text('title')|tex)))}{(((e.text('dates')|tex)))}
+((* if e.visible_bullets *))
+      \resumeItemListStart
+((* for b in e.visible_bullets *))
+        \resumeItem{(((b|tex)))}
+((* endfor *))
+      \resumeItemListEnd
+((* endif *))
+((* endfor *))
+
+  \resumeSubHeadingListEnd
+
+((* endif *))((* endmacro *))
+((* macro projects(projects) *))((* if projects *))
+
+%-----------PROJECTS-----------
+\section{Projects}
+    \resumeSubHeadingListStart
+((* for p in projects *))
+
+      \resumeProjectHeading
+          {\textbf{(((p.name|tex)))}((* if p.text('tech') *)) $|$ \emph{(((p.text('tech')|tex)))}((* endif *))}{(((p.text('date')|tex)))}
+((* if p.visible_bullets *))
+          \resumeItemListStart
+((* for b in p.visible_bullets *))
+            \resumeItem{(((b|tex)))}
+((* endfor *))
+          \resumeItemListEnd
+((* endif *))
+((* endfor *))
+
+    \resumeSubHeadingListEnd
+
+((* endif *))((* endmacro *))
+((* macro skills(skills) *))((* if skills *))
+
+%-----------TECHNICAL SKILLS-----------
+\section{Technical Skills}
+ \begin{itemize}[leftmargin=0.15in, label={}]
+    \small{\item{
+((* for s in skills *))
+     \textbf{(((s.label|tex)))}{: (((s.text('items')|tex)))}(((" \\\\" if not loop.last else "")))
+((* endfor *))
+    }}
+ \end{itemize}
+
+((* endif *))((* endmacro *))
+((# ---- "simple" template variants: single-line entry headings, no titlerule ---- #))
+((* macro education_plain(education) *))((* if education *))
+
+%-----------EDUCATION & CERTIFICATES-----------
+\section{Education \& Certificates}
+  \begin{itemize}[leftmargin=0.15in]
+((* for e in education *))
+((* set status_text = e.text('status') or e.text('date') *))
+    \item \small{(((e.text('degree')|tex))) from (((e.school|tex))) in (((e.text('location')|tex)))((* if e.text('gpa') *)); GPA: (((e.text('gpa')|tex)))((* endif *))} \hfill \small{(((status_text|tex)))}
+((* if e.visible_bullets *))
+    \begin{itemize}
+((* for b in e.visible_bullets *))
+      \resumeItem{(((b|tex)))}
+((* endfor *))
+    \end{itemize}
+((* endif *))
+((* endfor *))
+  \end{itemize}
+
+((* endif *))((* endmacro *))
+((* macro experience_plain(experience) *))((* if experience *))
+
+%-----------WORK HISTORY-----------
+\section{Work History}
+  \resumeSubHeadingListStart
+((* for e in experience *))
+    \resumeHeadingLine{(((e.text('title')|tex))) at (((e.company|tex)))((* if e.text('location') *)), (((e.text('location')|tex)))((* endif *))}{(((e.text('dates')|tex)))}
+((* if e.visible_bullets *))
+      \resumeItemListStart
+((* for b in e.visible_bullets *))
+        \resumeItem{(((b|tex)))}
+((* endfor *))
+      \resumeItemListEnd
+((* endif *))
+((* endfor *))
+  \resumeSubHeadingListEnd
+
+((* endif *))((* endmacro *))
+((* macro projects_plain(projects) *))((* if projects *))
+
+%-----------PROJECTS-----------
+\section{Projects}
+  \resumeSubHeadingListStart
+((* for p in projects *))
+    \resumeHeadingLine{(((p.name|tex)))((* if p.text('tech') *)) -- (((p.text('tech')|tex)))((* endif *))}{(((p.text('date')|tex)))}
+((* if p.visible_bullets *))
+      \resumeItemListStart
+((* for b in p.visible_bullets *))
+        \resumeItem{(((b|tex)))}
+((* endfor *))
+      \resumeItemListEnd
+((* endif *))
+((* endfor *))
+  \resumeSubHeadingListEnd
+
+((* endif *))((* endmacro *))
+((* macro leadership_plain(leadership) *))((* if leadership *))
+
+%-----------LEADERSHIP / EXTRACURRICULAR-----------
+\section{Leadership / Extracurricular}
+  \resumeSubHeadingListStart
+((* for e in leadership *))
+    \resumeHeadingLine{(((e.text('role')|tex))) at (((e.organization|tex)))((* if e.text('location') *)), (((e.text('location')|tex)))((* endif *))}{(((e.text('dates')|tex)))}
+((* if e.visible_bullets *))
+      \resumeItemListStart
+((* for b in e.visible_bullets *))
+        \resumeItem{(((b|tex)))}
+((* endfor *))
+      \resumeItemListEnd
+((* endif *))
+((* endfor *))
+  \resumeSubHeadingListEnd
+
+((* endif *))((* endmacro *))
+((* macro leadership(leadership) *))((* if leadership *))
+
+%-----------LEADERSHIP / EXTRACURRICULAR-----------
+\section{Leadership / Extracurricular}
+  \resumeSubHeadingListStart
+((* for e in leadership *))
+
+    \resumeSubheading
+      {(((e.organization|tex)))}{(((e.text('location')|tex)))}
+      {(((e.text('role')|tex)))}{(((e.text('dates')|tex)))}
+((* if e.visible_bullets *))
+      \resumeItemListStart
+((* for b in e.visible_bullets *))
+        \resumeItem{(((b|tex)))}
+((* endfor *))
+      \resumeItemListEnd
+((* endif *))
+((* endfor *))
+
+  \resumeSubHeadingListEnd
+
+((* endif *))((* endmacro *))

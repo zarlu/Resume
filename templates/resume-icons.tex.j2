@@ -1,0 +1,93 @@
+%-------------------------
+% Resume in LaTeX — icon-header variant of Jake Gutierrez's "Jake's Resume" template (MIT)
+%
+% GENERATED FILE: edit resume.json or templates/resume-icons.tex.j2, then run `uv run build.py`.
+%
+% PLACEHOLDERS: anything wrapped in \ph{...} renders in red so it is easy to spot.
+% `uv run build.py --final` redefines \ph as plain black text (and fails if any remain).
+%-------------------------
+
+\documentclass[letterpaper,11pt]{article}
+
+\usepackage{latexsym}
+\usepackage[empty]{fullpage}
+\usepackage{titlesec}
+\usepackage{marvosym}
+\usepackage[usenames,dvipsnames]{color}
+\usepackage{verbatim}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+\usepackage{fancyhdr}
+\usepackage[english]{babel}
+\usepackage{tabularx}
+\usepackage{fontawesome5}
+% pdfTeX-only; Tectonic (XeTeX) maps text to Unicode natively, so skip it there.
+\ifdefined\pdfgentounicode\input{glyphtounicode}\fi
+
+% ---- Placeholder highlighter ----
+((* if final *))
+\newcommand{\ph}[1]{#1}
+((* else *))
+\newcommand{\ph}[1]{\textcolor{red}{#1}}
+((* endif *))
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyfoot{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+
+(((layout.preamble)))
+
+\urlstyle{same}
+
+\raggedbottom
+\raggedright
+\setlength{\tabcolsep}{0in}
+
+% Section formatting — bold headings is this template's one typographic difference
+\titleformat{\section}{
+  \vspace{(((layout.section_before)))}\scshape\raggedright\large\bfseries
+}{}{0em}{}[\color{black}\titlerule \vspace{-5pt}]
+
+% Ensure that generated PDF is machine readable / ATS parsable
+\ifdefined\pdfgentounicode\pdfgentounicode=1\fi
+
+%-------------------------
+% Custom commands
+((* include "_macros.tex.j2" *))
+((* import "_sections.tex.j2" as sections *))
+
+%-------------------------------------------
+%%%%%%  RESUME STARTS HERE  %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+%----------HEADING----------
+((* set location_part *))
+\raisebox{-0.1\height}\faMapMarker\ (((basics.location|tex)))
+((*- endset *))
+((* set phone_part *))
+\raisebox{-0.1\height}\faPhone\ (((basics.phone|tex)))
+((*- endset *))
+((* set email_part *))
+\href{mailto:(((basics.email|url)))}{\raisebox{-0.2\height}\faEnvelope\ \underline{(((basics.email|tex)))}}
+((*- endset *))
+((* set linkedin_part *))
+\href{(((basics.linkedin_url|url)))}{\raisebox{-0.2\height}\faLinkedin\ \underline{(((basics.linkedin_label|tex)))}}
+((*- endset *))
+((* set github_part *))
+\href{(((basics.github_url|url)))}{\raisebox{-0.2\height}\faGithub\ \underline{(((basics.github_label|tex)))}}
+((*- endset *))
+((* set parts = [location_part, basics.citizenship|tex, phone_part if basics.phone, email_part, linkedin_part if basics.linkedin_url, github_part if basics.github_url] *))
+((* set sep = " ~ " *))
+((* set header_line = parts|select|join(sep) *))
+\begin{center}
+    {\Huge \scshape (((basics.name|tex)))} \\ \vspace{1pt}
+    \small (((header_line)))
+    \vspace{-8pt}
+\end{center}
+
+(((sections.education(education))))(((sections.experience(experience))))(((sections.projects(projects))))(((sections.skills(skills))))(((sections.leadership(leadership))))
+%-------------------------------------------
+\end{document}

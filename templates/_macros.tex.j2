@@ -1,0 +1,41 @@
+((# Custom commands shared by every top-level template. Included (not imported), so it shares
+   the caller's context: (((layout...))) below sees the same `layout` the including template
+   was rendered with. #))
+\newcommand{\resumeItem}[1]{
+  \item\small{
+    {#1 \vspace{-2pt}(((layout.bullet_extra)))}
+  }
+}
+
+\newcommand{\resumeSubheading}[4]{
+  \vspace{-2pt}(((layout.entry_extra)))\item
+    \begin{tabular*}{0.97\textwidth}[t]{l@{\extracolsep{\fill}}r}
+      \textbf{#1} & #2 \\
+      \textit{\small#3} & \textit{\small #4} \\
+    \end{tabular*}\vspace{-7pt}
+}
+
+\newcommand{\resumeProjectHeading}[2]{
+    (((layout.entry_extra)))\item
+    \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
+      \small#1 & #2 \\
+    \end{tabular*}\vspace{-7pt}
+}
+
+% One-line italic heading (title/company left, dates right) with no visible bullet.
+% Used by the "simple" template in place of \resumeSubheading's two-line block.
+\newcommand{\resumeHeadingLine}[2]{
+    (((layout.entry_extra)))\item
+    \begin{tabular*}{0.97\textwidth}[t]{l@{\extracolsep{\fill}}r}
+      \textit{\small#1} & \textit{\small#2} \\
+    \end{tabular*}\vspace{-7pt}
+}
+
+\newcommand{\resumeSubItem}[1]{\resumeItem{#1}\vspace{-4pt}}
+
+\renewcommand\labelitemii{$\vcenter{\hbox{\tiny$\bullet$}}$}
+
+\newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=0.15in, label={}]}
+\newcommand{\resumeSubHeadingListEnd}{\end{itemize}}
+\newcommand{\resumeItemListStart}{\begin{itemize}}
+\newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-5pt}}

@@ -1,0 +1,15 @@
+[project]
+name = "resume-build"
+version = "0.1.0"
+description = "Turn one resume.json into a one-page, ATS-safe PDF, with a local live-preview web UI"
+readme = "README.md"
+license = { file = "LICENSE" }
+requires-python = ">=3.12"
+dependencies = [
+    "fastapi>=0.141.1",
+    "jinja2>=3.1.6",
+    "pydantic>=2",
+    "pypdf>=6.19.0",
+    "uvicorn>=0.53.0",
+    "watchfiles>=1.2.0",
+]
